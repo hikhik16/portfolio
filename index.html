@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+<meta name="title" content="portfolio">
+<meta name="description" content="portfolio">
+<meta name="keywords" content="portfolio">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/main.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,
+vietnamese" rel="stylesheet">
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/masonry-docs.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+</head>
+<body>
+	<div class="Wrap">
+		<div class="skip-btn">
+			<ul>
+				<li><a href="#header">상단 바로가기</a></li>
+				<li><a href="#content">본문 바로가기</a></li>
+				<li><a href="#footer">하단 바로가기</a></li>
+			</ul>
+		</div>
+		<header><!-- 상단 -->
+			<div id="header">
+				<div class="in">
+					<h1 class="h1Logo"><a href="index.html"><span>Port</span>folio</a></h1>
+					<a href="#n" class="menu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</a>
+				</div>
+				<nav><!-- gnb메뉴 -->
+					<ul class="gnb">
+						<li class="first">메뉴</li>
+						<li><a href="#container">Home</a></li>
+						<li><a href="#self">Self</a></li>
+						<li><a href="#work">Work</a></li>
+					</ul>
+					<ul class="addBox">
+						<li>서울시 관악구 신림 거주</li>
+						<li>Tel : 010-2788-4282</li>
+						<li class="m_mail">hikhikhik@naver.com</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<section><!-- 내용 -->
+			<div id="container">
+				<h2 class="blind">내용</h2>
+				<article>
+					<h3 class="blind">메인 슬라이드</h3>
+					<div class="slide">
+						<div class="arrowBtn"><!-- 슬라이드버튼 -->
+							<a href="#n" class="prev">이전</a>
+							<a href="#n" class="next">다음</a>
+						</div>
+						<div class="mainSlide"><!-- 슬라이드 -->
+							<ul>
+								<li class="img1 show">
+									<dl>
+										<dt>Publisher</dt>
+										<dd>Kang Hyun Su</dd>
+									</dl>
+									<div class="slideImg">
+										<img src="images/main/img_visual01.jpg" alt="여성이 노트북을 조작하고있는 모습" />
+									</div>
+								</li>
+								<li class="img2">
+									<dl>
+										<dt>publisher</dt>
+										<dd>youthful zest</dd>
+									</dl>
+									<div class="slideImg">
+										<img src="images/main/img_visual02.jpg" alt="여성이 노트북을 조작하고있는 모습" />
+									</div>
+								</li>
+								<li class="img3">
+									<dl>
+										<dt>Publisher</dt>
+										<dd>3nd year of service</dd>
+									</dl>
+									<div class="slideImg">
+										<img src="images/main/img_visual03.jpg" alt="나무소재의 탁상위에 노트북과 커피가 있는 모습" />
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="indicator"><!-- 슬라이드 조절 -->
+							<ul>
+								<li><a href="#" title="1번">첫번째</a></li>
+							</ul>
+						</div>
+					</div>
+				</article>
+				<article id="self">
+					<div class="selfBox">
+						<h3 class="blind">자기 소개</h3>
+						<div class="selfIntro">
+							<h4>경력</h4>
+							<ol>
+								<li><span class="ico1">step1</span>인제대학교 정보통신공학과 졸업 08.03 ~ 16.02</li>
+								<li><span class="ico2">step2</span>디지털 인재개발원에서 ul/ux 퍼블리셔  6개월 과정 수료 16.01 ~ 16.07</li>
+								<li><span class="ico3">step3</span>(주)스코인포 부산지사 디자인팀 퍼블리싱 파트 근무 16.08 ~ 18.08  </li>
+								<li><span class="ico4">step4</span>(주)해커스 교육그룹 웹개발팀 퍼블리셔 근무 18.10~  </li>
+							</ol>
+						</div>
+						<div class="selfSkill" id="skill">
+							<h4>기술</h4>
+							<ul class="skillList">
+								<li>
+									<a href="#n" class="ico1"><span>마크업</span>
+										<dl>
+											<dt>Mark Up</dt>
+											<dd></dd>
+										</dl>
+									</a>
+								</li>
+								<li><a href="#n" class="ico2"><span>CSS</span>CSS</a></li>
+								<li><a href="#n" class="ico3"><span>제이쿼리</span>Jquery</a></li>
+								<li><a href="#n" class="ico4"><span>접근성</span>접근성</a></li>
+								<li><a href="#n" class="ico5"><span>반응형</span>반응형</a></li>
+							</ul>
+						</div>
+					</div>
+				</article>
+				<article id="work">
+					<h3 class="blind">작업 리스트</h3>
+					<div class="cont">
+						<h4>참여프로젝트</h4>
+						<!-- 작업물 필터 -->
+						<ul class="work-filter">
+							<li class="on" data-filter="*"><button>전체</button></li>
+							<li data-filter=".web"><button>웹</button></li>
+							<li data-filter=".mobile"><button>모바일</button></li>
+							<li data-filter=".respone"><button>반응형</button></li>
+							<li data-filter=".event"><button>운영</button></li>
+						</ul>
+						<!-- 작업물 필터 -->
+						<!-- 작업물 -->
+						<div class="workList">
+							<div class="web list">
+								<a href="http://www.busanjin.go.kr/bujeon1/index.busanjin" target="blank_" title="새창">
+									<img src="images/main/img_project01.jpg" alt="부산진구 동별 홈페이지" />
+									<div>
+										<strong>부산진구 동별</strong>
+										<dl>
+											<dt>리뉴얼 사이트</dt>
+											<dd>참여율 90%</dd>
+											<dd>메인,서브 레이아웃 및 전반적인 컨텐츠 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="web list">
+								<a href="#">
+									<img src="images/main/img_project02.jpg" alt="고성동부 도서관 홈페이지" />
+									<div>
+										<strong>고성동부도서관</strong>
+										<dl>
+											<dt>신규 사이트</dt>
+											<dd>참여율 70%</dd>
+											<dd>컨텐츠 코딩(현재 서버 이상으로 닫혀져있음)</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="respone list">
+								<a href="http://www.gunsan.go.kr/tour/index.gunsan" target="_blank" title="새창">
+									<img src="images/main/img_project03.jpg" alt="군산시문화관광 홈페이지" />
+									<div>
+										<strong>군산시 문화관광 홈페이지</strong>
+										<dl>
+											<dt>신규 사이트</dt>
+											<dd>참여율 60%</dd>
+											<dd>컨텐츠 코딩 (현재 서버 이상으로 닫혀져있음)</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="respone list">
+								<a href="https://www.jbtp.or.kr/eng/index.php" target="_blank" title="새창">
+									<img src="images/main/img_project04.jpg" alt="전북테크노파크 외국어" />
+									<div>
+										<strong>전북테크노 파크 외국어</strong>
+										<dl>
+											<dt>신규 사이트</dt>
+											<dd>참여율 60%()</dd>
+											<dd>레이아웃 및 컨텐츠 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="mobile list">
+								<a href="http://m.gochang.go.kr/index.gochang?contentsSid=4810" target="_blank" title="새창">
+									<img src="images/main/img_project05.jpg" alt="고창군 모바일" />
+									<div>
+										<strong>고창군 모바일</strong>
+										<dl>
+											<dt>신규 사이트</dt>
+											<dd>참여율 80%</dd>
+											<dd>레이아웃 및 전반적인 컨텐츠 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="respone list">
+								<a href="http://data.ulsan.go.kr/index.ulsan"  target="_blank" title="새창">
+									<img src="images/main/img_project06.jpg" alt="울산광역시 공공데이터 홈페이지" />
+									<div>
+										<strong>울산광역시 공공데이터</strong>
+										<dl>
+											<dt>신규 사이트</dt>
+											<dd>참여율 70%()</dd>
+											<dd>레이아웃 및 스킨 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="respone list">
+								<a href="http://www.gyeongnam.go.kr/index.gyeong" target="_blank" title="새창">
+									<img src="images/main/img_project07.jpg" alt="경남도청 홈페이지" />
+									<div>
+										<strong>경남도청</strong>
+										<dl>
+											<dt>신규 사이트</dt>
+											<dd>참여율 30%</dd>
+											<dd>외주업체 코딩 수정 및 적용</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="respone list">
+								<a href="http://tour.geoje.go.kr/index.geoje" target="_blank" title="새창">
+									<img src="images/main/img_project08.jpg" alt="거제문화관광 홈페이지" />
+									<div>
+										<strong>거제 문화관광</strong>
+										<dl>
+											<dt>신규 사이트</dt>
+											<dd>참여율 30%</dd>
+											<dd>외주업체 코딩 수정 및 적용</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="respone list">
+								<a href="http://www.gyeongnam.go.kr/susan/index.gyeong" target="blank_" title="새창">
+									<img src="images/main/img_project09.jpg" alt="경남 수산자원연구소" />
+									<div>
+										<strong>경남 수산자원연구소</strong>
+										<dl>
+											<dt>마이크로 사이트</dt>
+											<dd>참여율 80%</dd>
+											<dd>레이아웃 및 컨텐츠 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="web list">
+								<a href="https://www.goseong.go.kr/mayor/index.goseong" target="blank_" title="새창">
+									<img src="images/main/img_project11.jpg" alt="위더스독학사" />
+									<div>
+										<strong>고성 열린군수실</strong>
+										<dl>
+											<dt>마이크로 사이트</dt>
+											<dd>참여율 100%</dd>
+											<dd>레이아웃 및 컨텐츠 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="web list event">
+								<a href="http://www.haksa2080.com/" target="blank_" title="새창">
+									<img src="images/main/img_project10.jpg" alt="위더스독학사" />
+									<div>
+										<strong>위더스 독학사</strong>
+										<dl>
+											<dt>리뉴얼 사이트</dt>
+											<dd>참여율 100%</dd>
+											<dd>레이아웃 및 컨텐츠 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="web list event">
+								<a href="http://www.haksa2080.com/" target="blank_" title="새창">
+									<img src="images/main/img_project12.jpg" alt="해커스편입" />
+									<div>
+										<strong>해커스 편입</strong>
+										<dl>
+											<dt>기존 사이트</dt>
+											<dd>유지보수</dd>
+											<dd>페이지 수정 및 이벤트 페이지 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="web list event">
+								<a href="http://www.edu2080.co.kr" target="blank_" title="새창">
+									<img src="images/main/img_project13.jpg" alt="위더스 평생교육" />
+									<div>
+										<strong>위더스 평생교육</strong>
+										<dl>
+											<dt>기존 사이트</dt>
+											<dd>유지보수</dd>
+											<dd>페이지 수정 및 이벤트 페이지 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="web list event">
+								<a href="https://www.paranhanul.net" target="blank_" title="새창">
+									<img src="images/main/img_project14.jpg" alt="한울 원격평생교육" />
+									<div>
+										<strong>한울 원격평생교육</strong>
+										<dl>
+											<dt>기존 사이트</dt>
+											<dd>유지보수</dd>
+											<dd>페이지 수정 및 이벤트 페이지 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="mobile list event">
+								<a href="http://m.edu2080.co.kr/" target="blank_" title="새창">
+									<img src="images/main/img_project15.jpg" alt="위더스 모바일" />
+									<div>
+										<strong>모바일 위더스</strong>
+										<dl>
+											<dt>기존 사이트</dt>
+											<dd>유지보수</dd>
+											<dd>메인 리뉴얼 및 이벤트 페이지 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="mobile list event">
+								<a href="https://m.paranhanul.net/" target="blank_" title="새창">
+									<img src="images/main/img_project16.jpg" alt="한울 모바일" />
+									<div>
+										<strong>모바일 한울</strong>
+										<dl>
+											<dt>기존 사이트</dt>
+											<dd>유지보수</dd>
+											<dd>페이지 수정 및 이벤트 페이지 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="mobile list event">
+								<a href="javascript:;" onclick="alert('로그인 해야지 볼 수 있는 페이지입니다.')">
+									<img src="images/main/img_project17.jpg" alt="중개사 모바일 마이페이지" />
+									<div>
+										<strong>모바일 중개사 나의페이지</strong>
+										<dl>
+											<dt>기존 사이트</dt>
+											<dd>리뉴얼</dd>
+											<dd>페이지 리뉴얼</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+							<div class="mobile list event">
+								<a href="http://m.haksa2080.com/" target="blank_" title="새창">
+									<img src="images/main/img_project18.jpg" alt="중개사 모바일 마이페이지" />
+									<div>
+										<strong>모바일 독학사</strong>
+										<dl>
+											<dt>신규 사이트</dt>
+											<dd>신규</dd>
+											<dd>컨텐츠페이지 코딩</dd>
+										</dl>
+									</div>
+								</a>
+							</div>
+						</div>
+						<!-- //작업물 -->
+					</div>
+				</article>
+			</div>
+		</section>
+		<footer><!-- 하단 -->
+			<div id="footer">
+				<h4>Content us</h4>
+				<!-- <div class="f1Logo">
+					<h1 class="h1Logo"><a href="index.html"><span>Port</span>folio</a></h1>
+				</div> -->
+				<address>
+					<ul class="addBox">
+						<li>서울시 관악구 신림 거주</li>
+						<li>Tel : 010-2788-4282</li>
+						<li class="m_mail">hikhikhik@naver.com</li>
+					</ul>
+				</address>
+			</div>
+		</footer>
+		<div class="mousecursor"><span></span></div>
+	</div>
+</body>
+</html>
