@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag_drop</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/jquery-1.12.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <style>
+    /*퍼즐*/
+    .puzzle_wrap{position:relative;width: 1000px;}
+    .dragg_wrap{position:absolute;top:137px;right:64px;width:225px;height:295px;}
+    .dragg_wrap.t1{top:364px;right:292px;}
+    .dragg_wrap span{display:none;}
+    .dragg_wrap span.on{display:block;}
+    .dragg_wrap ul,
+    .dragg_wrap2 ul{}
+    .dragg_wrap ul li,
+    .dragg_wrap2 ul li{display:none;}
+    .dragg_wrap ul li.on,
+    .dragg_wrap.2 ul li{display:block;}
+
+    .puzzle_item{position:absolute;top:166px;left:64px;width:350px;}
+    .puzzle_item span{position:absolute;}
+    .puzzle_item #dragg0{top:10px;left:0;}
+    .puzzle_item #dragg1{top:10px;left:180px;}
+    .puzzle_item #dragg2{top:230px;left:0;}
+    .puzzle_item #dragg3{top:230px;left:180px;}
+
+    .arrow{position:absolute;bottom:56px;left:257px;animation:move 1s infinite;}
+    @keyframes move {
+
+        0%,100% {left: 247px; }
+        50%{left:257px;}
+
+    }
+  
+    </style>
+    <div class="puzzle_wrap">
+        <img src="http://gscdn.hackers.co.kr/hanul/images/event/2021/0906/cont05_puzzle.jpg" alt="퍼즐을 드래그해서 맞춰보세요! 소원빌면 이뤄진달 해커스가족 여러분의 모든 소망이 이뤄지기를!"/>
+        <span class="arrow">
+            <img src="http://gscdn.hackers.co.kr/hanul/images/event/2021/0906/ico_arrow.png" alt="퍼즐을 쏘옥"/>
+        </span>
+        <div class="dragg_wrap" id="drag_wrap">
+            <span id="puzzle_img1"><img src="http://gscdn.hackers.co.kr/hanul/images/event/2021/0906/puzzle02_on.png" alt="퍼즐 2(빌면 진달)"></span>
+        </div>
+        <div class="dragg_wrap t1">
+            <span id="puzzle_img2"><img src="http://gscdn.hackers.co.kr/hanul/images/event/2021/0906/puzzle03_on.png" alt="퍼즐 3(해커스가족 여러분의 모든 소원이 이뤄지기를)"></span>
+        </div>
+        <div class="puzzle_item">
+            <span class="dragg" id="dragg0"><img src="http://gscdn.hackers.co.kr/hanul/images/event/2021/0906/puzzle01.png" alt="퍼즐 1(가나 다라)"></span>
+            <span class="dragg" id="dragg1"><img src="http://gscdn.hackers.co.kr/hanul/images/event/2021/0906/puzzle02.png" alt="퍼즐 2(빌면 진달)"></span>
+            <span class="dragg" id="dragg2"><img src="http://gscdn.hackers.co.kr/hanul/images/event/2021/0906/puzzle03.png" alt="퍼즐 3(해커스가족 여러분의 모든 소원이 이뤄지기를)"></span>
+            <span class="dragg" id="dragg3"><img src="http://gscdn.hackers.co.kr/hanul/images/event/2021/0906/puzzle04.png" alt="퍼즐 4(♥)"></span>
+        </div>
+        <!-- //퍼즐 -->
+    </div>
+    <script>
+        $(function(){
+
+// 드래그앤드롭 js
+var currentIdx = -1; // 현재 키워드의 index
+var prevIndex = -1; // 이전 키워드의 index
+var result = 2,
+    top = 0,
+    bot = 0;
+
+
+var puzzle = function(left, top){
+    this.left = left,
+    this.top = top;
+}
+
+//퍼즐문제 위치
+var puzzleArr = [
+    new puzzle(0,10),
+    new puzzle(180,10),
+    new puzzle(0,230),
+    new puzzle(180,230)
+];
+
+// Drag
+$('.puzzle_item .dragg').draggable({
+    containment:"document",
+    revert:true, // 드래그 영역이 아닐때 되돌리기 옵션
+});
+
+// Drop 
+$('.dragg_wrap').droppable({
+    accept:".puzzle_item .dragg",
+    drop: function( event, item ){
+        
+        var len = $(item.draggable).attr('id').length-1; //글자수
+        var tempIdx = $(item.draggable).attr("id").substr(len, 1); // 현재 인덱스
+        prevIndex = currentIdx; // 전 드래그인덱스
+        item.draggable.css( { display:"none" } ); // food 드래그완료 후 숨기기
+        
+        //하단영역
+        if($(this).hasClass('t1')){
+            
+            if (tempIdx == 2){
+                currentIdx = tempIdx; 
+                changeImg(); // 드래그 완료 이미지 보이기
+                top = 1;
+            }else{
+                alert('아쉬워요! 퍼즐 그림을 보고 다시 한 번 도전해보세요!');
+                $("#dragg" + tempIdx).css({left:puzzleArr[tempIdx].left, top:puzzleArr[tempIdx].top}).fadeIn(300); // 현재 드래그객체 원래 자리에 배치하기
+                
+            }
+        //상단영역
+        }else{
+    
+            if (tempIdx == 1){
+                bot = 1;
+                currentIdx = tempIdx; 
+                console.log('aa');
+                changeImg(); // 드래그 완료 이미지 보이기
+            }else{
+                alert('아쉬워요! 퍼즐 그림을 보고 다시 한 번 도전해보세요!');
+                $("#dragg" + tempIdx).css({left:puzzleArr[tempIdx].left, top:puzzleArr[tempIdx].top}).fadeIn(300); // 이전 드래그객체 원래 자리에 배치하기
+                
+                console.log('현재인덱스' + currentIdx);
+                console.log('이전인덱스' + prevIndex);
+            }
+        }
+
+        //결과
+        if(result == top+bot){
+            alert('STEP1. 퍼즐 완성! 하단 소원 빌고 혜택 받아가세요! ');
+
+            $('#cmt_input').attr('onclick','click_comment()');
+            $('.btn_cmt').attr('onclick','comment_submit()');
+            move_scroll('comment');
+        }
+    }
+});
+
+//퍼즐이미지
+function changeImg(){
+    $("#puzzle_img" + currentIdx).addClass("on").fadeIn(150);
+}
+
+
+});
+
+    </script>
+</body>
+</html>
