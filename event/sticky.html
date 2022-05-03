@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>sticky</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ </head>
+ <script>
+	$(document).ready(function(){
+		var st = $('.test .s1').offset().top;
+		var _n = 0;
+		var _n2 = 0;
+		//아래로 펼쳐짐
+		$('.txt_list').bind("mousewheel", function(event){
+			if(event.originalEvent.wheelDelta >= 0){
+				_n--;
+				console.log(_n)
+				if(_n > 1 && _n < 4){
+					$('.test .s1').addClass('fade-in').removeClass('fade-out').next().addClass('fade-out');
+				}
+				if(_n > 4 && _n < 7){
+					$('.test .s2').addClass('fade-in').removeClass('fade-out').next().addClass('fade-out');
+				}
+				if(_n > 7 && _n < 10){
+					$('.test .s3').addClass('fade-in').removeClass('fade-out').next().addClass('fade-out');
+				}
+				if(_n < 0){
+					_n=0;
+				}
+			}else{
+				_n++;
+				console.log(_n);
+				if(_n > 1 && _n < 4){
+					$('.test .s1').addClass('fade-in').removeClass('fade-out');
+				}
+				if(_n > 4 && _n < 7){
+					$('.test .s2').addClass('fade-in').removeClass('fade-out').prev().addClass('fade-out');
+				}
+				if(_n > 7 && _n < 10){
+					$('.test .s3').addClass('fade-in').removeClass('fade-out').prev().addClass('fade-out');
+				}
+				if(_n > 10 && _n < 13){
+					$('.test .s4').addClass('fade-in').removeClass('fade-out').prev().addClass('fade-out');
+				}
+
+				if(_n > 13){
+					_n=13;
+					$('.test .s4').addClass('fade-out');
+				}
+			}
+		})
+		//같은영역에서 
+		$('.txt_list2').bind("mousewheel", function(event){
+			if(event.originalEvent.wheelDelta >= 0){
+				_n2--;
+				console.log(_n2)
+				if(_n2 > 1 && _n2 < 4){
+					$('.txt_list2 .s1').addClass('fade-in').removeClass('fade-out').next().addClass('fade-out');
+				}
+				if(_n2 > 4 && _n2 < 7){
+					$('.txt_list2 .s2').addClass('fade-in').removeClass('fade-out').next().addClass('fade-out');
+				}
+				if(_n2 > 7 && _n2 < 10){
+					$('.txt_list2 .s3').addClass('fade-in').removeClass('fade-out').next().addClass('fade-out');
+				}
+				if(_n2 > 10 && _n2 < 13){
+					$('.test .s4').addClass('fade-in');
+				}
+			}else{
+				_n2++;
+				console.log(_n);
+				if(_n2 > 1 && _n2 < 4){
+					$('.txt_list2 .s1').addClass('fade-in').removeClass('fade-out');
+				}
+				if(_n2 > 4 && _n2 < 7){
+					$('.txt_list2 .s2').addClass('fade-in').removeClass('fade-out').prev().addClass('fade-out');
+				}
+				if(_n2 > 7 && _n2 < 10){
+					$('.txt_list2 .s3').addClass('fade-in').removeClass('fade-out').prev().addClass('fade-out');
+				}
+				if(_n2 > 10 && _n2 < 13){
+					$('.txt_list2 .s4').addClass('fade-in').removeClass('fade-out').prev().addClass('fade-out');
+				}
+				if(_n2 > 13 && _n2 < 16){
+					$('.txt_list2 .s4').addClass('fade-out');
+				}
+			}
+		})
+	});
+
+ </script>
+ <style>
+ *{padding:0;margin:0;}
+ .test{position:relative;height:200vh;background:#011a38}
+ .test2{position:relative;height:250vh;background:#011a38}
+/*.test .sticky{display: flex;align-items: center; justify-content: center;flex-direction: column;width: 100%;height: 100vh;}*/
+.test .txt_list{padding-top:50vh;width:100%;display:flex;justify-content:center;position:relative;}
+
+	.test .txt_list ul{font-size:80px;font-weight:700;}
+	.test .txt_list ul li{width:100%;text-align:center;padding-bottom: 15vh;opacity: .001;transform: translateY(70px);transition: transform .9s,opacity .9s;font-size:100px;font-style:oblique;font-weight:bold;color:#fff;}
+	.test .txt_list ul li.fade-in{opacity:.999;transform:translateY(0);}
+	.test .txt_list ul li.fade-out{opacity:.001;transform:translateY(-70px);}
+
+	.test2 .txt_list2{position:sticky;top:0;padding-top:50vh;width:100%;display:flex;justify-content:center;}
+	.test2 .txt_list2 ul{font-size:80px;font-weight:700;}
+	.test2 .txt_list2 ul li{position:absolute;left:0;width:100%;text-align:center;padding-bottom: 15vh;opacity: .001;transform: translateY(0);transition: transform .9s,opacity .9s;font-size:100px;font-style:oblique;font-weight:bold;color:#fff;}
+	.test2 .txt_list2 ul li.fade-in{opacity:.999;transform:translateY(0);}
+	.test2 .txt_list2 ul li.fade-out{opacity:.001;transform:translateY(-70px);}
+
+ </style>
+ <body>
+  <div class="test">
+		<!-- <div class="sticky"></div> -->
+		<div class="txt_list">
+			<ul>
+				<li class="s1">
+					WE CAN DO IT!
+				</li>
+				<li class="s2">
+					WITHUS
+				</li>
+				<li class="s3">
+					WITH _ US
+				</li>
+				<li class="s4">
+					위더스와 함께면 우리는 할 수 있습니다.
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="test2">
+		<!-- <div class="sticky"></div> -->
+		<div class="txt_list2">
+			<ul>
+				<li class="s1">
+					WE CAN DO IT!
+				</li>
+				<li class="s2">
+					WITHUS
+				</li>
+				<li class="s3">
+					WITH _ US
+				</li>
+				<li class="s4">
+					위더스와 함께면 우리는 할 수 있습니다.
+				</li>
+			</ul>
+		</div>
+	</div>
+ </body>
+</html>
