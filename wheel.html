@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+ </head>
+ <body>
+ 	<style>
+		*{padding:0;margin:0;box-sizing:border-box;}
+		.wrap{width:100%;padding-top:90px;}
+		.header{position:fixed;top:0;left:0;width:100%;height:90px;background:#fff;z-index:12;}
+		.section_wrap{position:relative;width:100%;height:calc(100vh - 90px);}
+		.section{position:absolute;top:-200%;left:0;width:100%;height:100%;padding:0 50px;color:#fff;overflow:hidden;}
+		.section01{background:red;}
+		.section02{background:yellow;}
+		.section03{background:green;}
+		.section04{background:blue;}
+		
+
+		.section.on{ top: 0; z-index: 9;}
+		.section.up{ top: 0; z-index: 10; animation: up 1.0s ease-in-out forwards;}
+		.section.down{ top: 0; z-index: 10; animation: down 1.0s ease-in-out forwards;}
+		.section.last{ padding: 0; overflow-y: auto;}
+		@keyframes up{
+			from{
+				transform: translateY(-100%);
+			}
+			to{
+				transform: translateY(0);
+			}
+		}
+		@keyframes down{
+			from{
+				transform: translateY(0);
+			}
+			to{
+				transform: translateY(-100%);
+			}
+		}
+
+	</style>
+	<div class="wrap">
+		<header>
+			<div class="header">
+				header
+			</div>
+		</header>
+		<article>
+			<div class="section_wrap">
+				<div class="section section01 on">1</div>
+				<div class="section section02">2</div>
+				<div class="section section03">3</div>
+				<div class="section section04">4</div>
+			</div>
+		</article>
+	</div>
+	<script>
+		$(document).ready(function(){
+		var clear;
+		$(".section01").addClass("on");
+		var _scrollReady = true;
+		$(".section").on('mousewheel', function(event, delta){
+			var wheight = $(".section04").scrollTop();
+			var con_total = $(".section").length;
+			var con_num = $(".section.on").index()+1;
+			console.log("con_total >>>> "+con_total);
+			console.log("con_num >>>> "+con_num);
+			console.log(delta);
+			if(delta < 0 ){ //아래로
+				console.log("방향 : down");
+				wheelDown(con_num,con_total);
+			} else if(delta > 0){ //위로
+				if(wheight == 0){
+					console.log("방향 : up");
+					wheelUp(con_num,con_total);
+				}
+			}
+		});
+
+		function wheelUp(con_num,con_total){
+			if(_scrollReady){
+				_scrollReady = false;
+				if(1 == con_num){
+				}else if( $(".section.section0"+(con_num-1)).attr("class").indexOf("down") != -1 ){
+					console.log("up >>>> 1");
+					var action_num = con_num;
+					var action_up = con_num-1;
+					$(".section").removeClass("on").removeClass("up").removeClass("down");
+					$(".section.section0"+action_up).addClass("up");
+					$(".section.section0"+action_num).addClass("on");
+				}else{
+					console.log("up >>>> 2");
+					var action_num = con_num-1;
+					var action_up = con_num-2;
+					$(".section").removeClass("on").removeClass("up").removeClass("down");
+					$(".section.section0"+action_up).addClass("up");
+					$(".section.section0"+action_num).addClass("on");
+				}
+
+				setTimeout(function(){
+					_scrollReady = true;
+				}, 1000);
+			}
+		}
+
+		function wheelDown(con_num,con_total){
+			if(_scrollReady){
+				_scrollReady = false;
+				
+				if(1 == con_num){
+					console.log("down >>>> 1");
+					var action_num = con_num+1;
+					console.log(action_num);
+					$(".section").removeClass("on").removeClass("up").removeClass("down");
+					$(".section.section0"+action_num).addClass("on");
+					$(".section.section0"+con_num).addClass("down");
+					console.log(con_num);
+				}else if( $(".section.section0"+(con_num-1)).attr("class").indexOf("up") != -1 ){
+					console.log("down >>>> 2");
+					var action_num = con_num-1;
+					$(".section").removeClass("on").removeClass("up").removeClass("down");
+					$(".section.section0"+con_num).addClass("on");
+					$(".section.section0"+action_num).addClass("down");
+				}else if(con_total == con_num){
+				}else{
+					console.log("down >>>> 3");
+					var action_num = con_num+1;
+					$(".section").removeClass("on").removeClass("up").removeClass("down");
+					$(".section.section0"+action_num).addClass("on");
+					$(".section.section0"+con_num).addClass("down");
+				}
+
+				setTimeout(function(){
+					_scrollReady = true;
+				}, 1000);
+			}
+		}
+	});
+	</script>
+ </body>
+</html>
