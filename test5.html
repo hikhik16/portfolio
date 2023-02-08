@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <style>
+        *{padding:0;margin: 0;list-style: none;box-sizing: border-box;}
+        body {background-color: #222;}
+        .progress-wrap{display:table;width:750px;table-layout: fixed;padding-top:100px;}
+        .circle_progress_wrap {position:relative;display:table-cell;vertical-align:middle;text-align:center;} 
+        .circle_progress_wrap h4{font-size:18px;color: #fff;}
+        .circle_progress_wrap h4 span{display: block;font-weight: normal;}
+        .circle_progress {transform: rotate(180deg);  -ms-transform: rotate(0);}
+        .frame, .bar {fill: none;}
+        .frame {stroke: #fff;stroke-linecap: round;}
+        .bar { stroke-linecap: round;}
+        .circle-con{color: #fff;position:absolute;top:60%;left:50%;transform:translate(-50%, -50%);}
+
+        .progress-wrap.type1 .circle_progress_wrap{width: 33.3%;}
+        .progress-wrap.type1 .bar-progress-wrap{display: table-cell;vertical-align: middle;}
+        .progress-wrap.type1 .bar-progress-wrap ul li{overflow: hidden;padding: 10px;}
+        .progress-wrap.type1 .bar-progress-wrap ul li > p{float: left;color: #fff;width: 30%;line-height:40px;}
+        .progress-wrap.type1 .bar-progress-wrap ul li:first-child > p{line-height: normal;}
+        .progress-wrap.type1 .bar-progress-wrap ul li .bar{float: left;position: relative;}
+        .bar{position:relative;width:calc(100% - 31%);height:40px;border:1px solid #ddd;}
+        .bar-in{position:absolute;top:0;left:0;width:0;height: 40px;z-index:1;background:red;}
+        .bar-txt{position:absolute;top:0;left:0;width:100%;height: 40px;line-height:40px;padding:0 10px;z-index:2;overflow: hidden;}
+        .bar-txt p{float: left;color:#fff;}
+        .bar-txt strong{float:right;color: #fff;}
+        .col-normal{color:#fff !important;}
+        .persent{color:red;}
+
+    </style>
+    <div class="progress-wrap">
+        <div class="circle_progress_wrap">
+            <h4>Homework <span>완료개수</span></h4>
+            <svg class="circle_progress" width="200" height="200" viewBox="0 0 200 200">
+                <circle class="frame" cx="100" cy="100" r="90" stroke-width="8"></circle>
+                <circle class="bar" cx="100" cy="100" r="90" stroke-width="8" stroke='red'></circle>
+            </svg>
+            <div class="circle-con">
+                <strong><span class="persent"></span></strong>
+                <p class="num"><strong>180개</strong>/<span>170개</span> </p>
+            </div>
+        </div>
+        <div class="circle_progress_wrap">
+            <h4>Vocabulary Test <span>완료개수</span></h4>
+            <svg class="circle_progress" width="200" height="200" viewBox="0 0 200 200">
+                <circle class="frame" cx="100" cy="100" r="90" stroke-width="8" ></circle>
+                <circle class="bar" cx="100" cy="100" r="90" stroke-width="8" stroke='green'></circle>
+            </svg>
+            <div class="circle-con">
+                <strong><span class="persent">0%</span></strong>
+            </div>
+        </div>
+        <div class="circle_progress_wrap">
+            <h4>Monthly Test <span>완료개수</span></h4>
+            <svg class="circle_progress" width="200" height="200" viewBox="0 0 200 200">
+                <circle class="frame" cx="100" cy="100" r="90" stroke-width="8" ></circle>
+                <circle class="bar" cx="100" cy="100" r="90" stroke-width="8" stroke='blue'></circle>
+            </svg>
+            <div class="circle-con">
+                <strong><span class="persent">50%</span></strong>
+            </div>
+        </div>
+    </div>
+    <div class="progress-wrap type1">
+        <div class="circle_progress_wrap">
+            <h4>e-Libary <span>달성률</span></h4>
+            <svg class="circle_progress" width="200" height="200" viewBox="0 0 200 200">
+                <circle class="frame" cx="100" cy="100" r="90" stroke-width="8"></circle>
+                <circle class="bar" cx="100" cy="100" r="90" stroke-width="8" stroke='red'></circle>
+            </svg>
+            <div class="circle-con">
+                <strong><span class="persent">%</span></strong>
+            </div>
+        </div>
+        <div class="bar-progress-wrap">
+            <ul>
+                <li>
+                    <p>월 시청 시간<br>(하루 시청 시간)</p>
+                    <div class="bar time" data-bg="green">
+                        <div class="bar-in"></div>
+                        <div class="bar-txt">
+                            <p><span class="min-hour">1</span>시간 <span class="min-minute">40</span>분(17분)/<span class="full-hour">3</span>시간 <span class='full-minute'>20</span>분 (10분)</p>
+                            <strong><span class="persent">%</span></strong>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p>퀴즈 횟수</p>
+                    <div class="bar" data-bg="green">
+                        <div class="bar-in"></div>
+                        <div class="bar-txt">
+                            <p><span class="min">1</span>회/<span class="full">10</span>회</p>
+                            <strong><span class="persent">%</span></strong>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p>퀴즈 평균 횟수</p>
+                    <div class="bar" data-bg="green">
+                        <div class="bar-in"></div>
+                        <div class="bar-txt">
+                            <p><span class="min">50</span>점/<span class="full">60</span>점</p>
+                            <strong><span class="persent">%</span></strong>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="progress-wrap type1">
+        <div class="circle_progress_wrap">
+            <h4>Book Club <span>달성률</span></h4>
+            <svg class="circle_progress" width="200" height="200" viewBox="0 0 200 200">
+                <circle class="frame" cx="100" cy="100" r="90" stroke-width="8"></circle>
+                <circle class="bar" cx="100" cy="100" r="90" stroke-width="8" stroke='red'></circle>
+            </svg>
+            <div class="circle-con">
+                <strong><span class="persent">%</span></strong>
+            </div>
+        </div>
+        <div class="bar-progress-wrap">
+            <ul>
+                <li>
+                    <p>월 독서 권수<br>(총 독서 권수)</p>
+                    <div class="bar" data-bg="blue">
+                        <div class="bar-in"></div>
+                        <div class="bar-txt">
+                            <p><span class="min">40</span>권(12권)/<span class="full">20</span>권</p>
+                            <strong><span class="persent">%</span></strong>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p>퀴즈 횟수</p>
+                    <div class="bar" data-bg="blue">
+                        <div class="bar-in"></div>
+                        <div class="bar-txt">
+                            <p><span class="min">0</span>회(12회)/<span class="full">20</span>회</p>
+                            <strong><span class="persent">%</span></strong>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p>퀴즈 평균 횟수</p>
+                    <div class="bar" data-bg="blue">
+                        <div class="bar-in"></div>
+                        <div class="bar-txt">
+                            <p><span class="min">60</span>점(70점)/<span class="full">60</span>점</p>
+                            <strong><span class="persent">%</span></strong>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+   
+    <script>
+        $(document).ready(function(){ 
+            $('.progress-wrap.type1').each(function(){ // 원형이랑 바랑 같이
+                let _total=0;
+                let _bar = $(this).find('.bar-progress-wrap ul li'), //바그래프
+                    _cir = $(this).find('.circle-con .persent'); // 원형그래프
+
+                _bar.each(function(){ 
+                    
+                    //퍼센트 구하기
+                    let _min = $(this).find('.bar .min').text(), 
+                        _full = $(this).find('.bar .full').text();
+                    let _sum =0;
+                        let _persent =  (_min/_full)*100;
+                    if($(this).find('.bar').hasClass('time')){ // 시간 분기처리
+                        let _min_hour = $(this).find('.bar .min-hour').text(),
+                            _min_minute = $(this).find('.bar .min-minute').text(),
+                            _full_hour = $(this).find('.bar .full-hour').text(),
+                            _full_minute = $(this).find('.bar .full-minute').text(),
+                            _min_sum = (_min_hour*60) + _min_minute,
+                            _full_sum = (_full_hour*60) + _full_minute;
+
+                            _sum = (_min_sum/_full_sum)*100;
+                       
+                        $(this).find('.persent').text(Math.floor(_sum) + '%');
+                    }else{
+                        $(this).find('.persent').text(Math.floor(_persent)+ '%');
+                    }
+                 
+                    // 퍼센트값이 100 이상시 100으로
+                    let _per = $(this).find('.persent').text().replace(/[^\w\sㄱ-힣]|[\_]/g, "");;
+                    if(_per >= 100){
+                        _per = 100;
+                        $(this).find('.persent').addClass('col-normal')
+                        //$(this).find('.persent').text('100%')
+                    
+                    }else{
+                    }
+                    
+                    let _con = $(this).find('.bar-in'),
+                        _bg = $(this).find('.bar').data('bg');
+                        
+                        _total = _total + parseInt(_per); // 바 퍼센트 총값 구하기 
+
+                        _con.css('background-color',_bg); //data-bg  값 받아와서 background 설정
+                        $(this).find('.bar').css('border-color',_bg)
+                            
+                        let i = 0;
+                        //그래프 채워지는 이벤트
+                        let func1 = setInterval(function(){
+                            if(i<=_per){
+                                _con.css('width', i + '%');        
+                                
+                                i++;
+                            } else{
+                                clearInterval(func1);
+                            }
+                        },10);
+                });
+                _total = (_total/300) * 100; 
+                if(_total >= 100){
+                    _cir.addClass('col-normal')
+                }
+                _cir.text(Math.floor(_total)+ '%');
+            });
+            
+            $('.circle_progress_wrap').each(function(){
+                let _bar = $(this).find('.bar'),
+                    _r = _bar.attr('r'), 
+                    _c = Math.PI*(_r*2);
+                _bar.css('stroke-dasharray',_c);
+                _bar.css('stroke-dashoffset',_c);
+                let _numwrap = $(this).find('.num'),
+                    _gusnum = _numwrap.find('strong').text().replace(/[^0-9]/g, ""), //맞힌개수
+                    _allnum = _numwrap.find('span').text().replace(/[^0-9]/g, ""), //전체 개수
+                    _persum = Math.floor(_gusnum/_allnum * 100); //퍼센트 구하기
+               
+                if( $(this).find('.persent').text() == false){ //분기처리 (문제수 있는것과 없는것)
+                     $(this).find('.persent').text(_persum + '%');
+                }
+
+                let _per = $(this).find('.persent').text().replace(/[^\w\sㄱ-힣]|[\_]/g, "");
+                console.log(_per);
+                if(_per > 100){
+                    _per = 100;
+                    $(this).find('.persent').addClass('col-normal');
+                   //$(this).find('.persent').text('100%');
+                }
+                let _sum = ((100 - _per)/100)*_c;
+                let _min = _c - _sum;
+
+                var i = 0;
+                var func1 = setInterval(function(){
+                    if(i <= _min){
+                        _bar.css('stroke-dashoffset', _c - i);
+                        i++;
+                    }
+                    else{
+                        clearInterval(func1);
+                    }
+                },1);
+1800
+            });
+
+           
+        });
+
+           
+    </script>
+</body>
+</html>
