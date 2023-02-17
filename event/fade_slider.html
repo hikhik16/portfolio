@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</head>
+<style>
+    *{padding:0;margin:0;box-sizing:border-box;}
+    li{list-style: none;;}
+    #wrap{width:100%;height:100vh;overflow:hidden;}
+    .slider_item{position:relative;width:100%;height:100%;background:#000;}
+    .slider_item div{position:absolute;top:0;left:0;width:100%;height:100%;}
+    .slider_item div:nth-child(1){z-index:3;background:red;}
+    .slider_item div:nth-child(2){z-index:2;background:yellow;}
+    .slider_item div:nth-child(3){z-index:1;background:blue;}
+    .slider_dot{position:absolute;bottom:30px;left:50%;transform: translateX(-50%);z-index:5;}
+    .slider_dot ul{display:flex;gap:30px;}
+    .slider_dot ul li{float:left;position:relative;width:200px;height:15px;background:#000;text-indent:-9999px;cursor: pointer;}
+    .slider_dot ul li span{position:absolute;top:0;left:0;height:15px;background:#fff;}
+</style>
+<body>
+    <div id="wrap">
+        <div class="slider_item">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <div class="slider_dot">
+            <ul></ul>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+        console.log('aa');
+        var _item = $('.slider_item div').length;
+        for(var i=1; i<=_item; i++){
+            $('.slider_dot ul').append("<li data-num="+i+" onclick='button(this)'>"+ i +"</li>");
+        }
+        s_time();
+
+    });
+    var _num = 0;
+    var _item = $('.slider_item div').length;
+    var timer;
+   
+    function s_time(){
+        var _first = 1;
+        var _last= _item - 1;
+        
+        console.log(_num);
+        $('.slider_dot ul li span').remove();
+        $('.slider_dot ul li').eq(_num).append('<span>'+_num +'</span>');
+        $('.slider_item div').eq(_num).fadeIn().siblings().fadeOut();
+
+        $('.slider_dot ul li span').animate({
+            width:'100%'
+        },5000);
+        if(_num == _last){
+            _num = 0;
+        }else{
+            _num++;
+           // console.log(_num);
+        }
+       timer = setTimeout('s_time()',5000);      
+    }
+
+    function button(obj){
+        clearTimeout(timer);
+        var _this= $(obj).data('num');
+        _num = _this-1;
+        console.log(_this);
+        $('.slider_item div').eq(_num ).fadeIn().siblings().fadeOut();
+        s_time();
+    }
+
+    
+   
+</script>
+</html>
